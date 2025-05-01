@@ -47,9 +47,23 @@ router.get('/entries',(req,res)=>{
     res.render('edit',{id:ID, post})
   })
 
-  // router.post('/edit/:id',(req,res)=>{
-  //   const id = req.params.id
+  router.post('/edit/:id',upload.single('image'),(req,res)=>{
+    const posts = getPosts()
+    const ID = req.params.id
+    const post = posts[ID]
 
-  // })
+    post.TripTitle= req.body.TripTitle
+    post.date= req.body.date
+    post.location= req.body.location
+    post.Story= req.body.story
+    post.tags= req.body.tags
+
+    if(req.file)
+        post.image = `/uploads/${req.file.filename}`
+
+  savePosts(posts)
+  res.redirect('/entries')
+  })
+  
   return router;
 }
