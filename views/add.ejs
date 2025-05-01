@@ -1,0 +1,42 @@
+<%- include('partials/header',{title: "Add post"}) %>
+
+<h1 class="mb-4">Add a New Post</h1>
+
+<!-- Back to Home button -->
+<a href="/" class="btn btn-secondary mb-3">← Back to Home</a>
+
+<form action="/add" method="POST" enctype="multipart/form-data">
+    <div class="mb-3">
+        <label for="TripTitle" class="form-label">Trip Title</label>
+        <input type="text" name="TripTitle" id="TripTitle" class="form-control" placeholder="Write trip title" required>
+    </div>
+
+    <div class="mb-3">
+        <label for="Date" class="form-label">Date</label>
+        <input type="date" name="date" id="Date" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+        <label for="location" class="form-label">Location</label>
+        <input type="text" name="location" id="location" class="form-control" placeholder="e.g., Kabul, Afghanistan" required>
+    </div>
+
+    <div class="mb-3">
+        <label for="story" class="form-label">Story/Notes</label>
+        <textarea name="story" id="story" class="form-control" rows="4" required></textarea>
+    </div>
+
+    <div class="mb-3">
+        <label for="tags" class="form-label">Tags</label>
+        <input type="text" name="tags" id="tags" class="form-control">
+    </div>
+
+    <div class="mb-3">
+        <label for="image" class="form-label">One image that can describe your trip (optional)</label>
+        <input type="file" name="image" id="image" class="form-control" accept="image/*">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Add Post</button>
+</form>
+
+<%- include('partials/footer') %>

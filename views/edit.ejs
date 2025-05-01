@@ -1,0 +1,48 @@
+<%- include('partials/header',{title: 'Edit post'}) %>
+
+<h1 class="mb-4">Edit Your Post</h1>
+
+<form action="/edit/<%= id %>" method="post" enctype="multipart/form-data" class="row g-3">
+  <div class="col-md-6">
+    <label for="TripTitle" class="form-label">Trip Title</label>
+    <input type="text" name="TripTitle" id="TripTitle" value="<%= post.TripTitle %>" class="form-control" placeholder="Write trip title" required>
+  </div>
+
+  <div class="col-md-6">
+    <label for="Date" class="form-label">Date</label>
+    <input type="date" name="date" id="Date" value="<%= post.Date %>" class="form-control" required>
+  </div>
+
+  <div class="col-12">
+    <label for="location" class="form-label">Location</label>
+    <input type="text" name="location" id="location" value="<%= post.location %>" class="form-control" placeholder="e.g., Kabul, Afghanistan" required>
+  </div>
+
+  <div class="col-12">
+    <label for="story" class="form-label">Story/Notes</label>
+    <textarea name="story" id="story" class="form-control" rows="4" required><%= post.story %></textarea>
+  </div>
+
+  <div class="col-md-6">
+    <label for="tags" class="form-label">Tags</label>
+    <input type="text" name="tags" id="tags" value="<%= post.tags %>" class="form-control">
+  </div>
+
+  <% if(post.image){ %>
+  <div class="col-12">
+    <label class="form-label">Current Image:</label><br/>
+    <img src="<%= post.image %>" class="img-thumbnail mb-3" style="max-height: 150px;">
+  </div>
+  <% } %>
+
+  <div class="col-12">
+    <label for="image" class="form-label">Replace Image (optional)</label>
+    <input type="file" name="image" id="image" class="form-control" accept="image/*">
+  </div>
+
+  <div class="col-12">
+    <button type="submit" class="btn btn-warning">Update Trip</button>
+  </div>
+</form>
+
+<%- include('partials/footer') %>
