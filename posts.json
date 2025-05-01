@@ -1,1 +1,18 @@
-[]
+[
+  {
+    "TripTitle": "dsf",
+    "Data": "2025-05-13",
+    "location": "fdsfsd",
+    "Story": "fds",
+    "tags": "fds",
+    "image": "/images/default.jpg"
+  },
+  {
+    "TripTitle": "fds",
+    "Data": "2025-05-23",
+    "location": "fdsfds",
+    "Story": "fd",
+    "tags": "fd",
+    "image": "/images/default.jpg"
+  }
+]
