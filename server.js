@@ -20,9 +20,9 @@ app.use(morgan('dev'))
 app.set('view engine', 'ejs')
 app.use(express.urlencoded({extended:true}))
 app.use("/uploads", express.static("uploads"));
+app.use(express.static('public'))
 
 // File Setup
-
 if(!fs.existsSync('posts.json')) fs.writeFileSync('posts.json','[]')
 if(!fs.existsSync('uploads')) fs.mkdirSync('uploads')
 
@@ -37,7 +37,7 @@ const storage = multer.diskStorage({
 const upload = multer({storage})
 
 // Router
-app.use('/',router(upload))
+app.use('/', router(upload))
 
 app.listen(PORT, ()=>{
     console.log(`Server is listening on port: ${PORT}`)

@@ -1,0 +1,35 @@
+<%- include('partials/header',{title: 'Edit post'}) %>
+<h1>Editing your post</h1>
+
+<form action="/edit/<%= id %>" method="post" enctype="multipart/form-data" >
+   
+    <label for="TripTitle">Trip Title</label>
+    <input type="text" name="TripTitle"
+    placeholder="Write trip title" value="<%= post.TripTitle %>"  required>
+  
+    <label for="Date">Date</label>
+    <input type="date" name="date" id="Date" value="<%= post.Date  %>" required>
+  
+    <label for="location">Location</label>
+    <input type="text" name="location" id="location" value="<%= post.location  %>" placeholder="e.g., Kabul, Afghanistan" required>
+  
+    <label for="story">Story/Notes</label>
+    <textarea name="story"  id="story" required> <%= post.story  %></textarea>
+  
+    <label for="tags">Tags</label>
+    <input type="text" value="<%= post.tags  %>" name="tags" id="tags">
+  
+    <% if(post.image){ %>
+        <div class="mb-3">
+            <label for="form-label">Current Image:</label><br/>
+            <img src="<%= post.image %>" class="img-thumbnail" style="max-height: 150px;" >
+        </div>
+        <% } %>
+
+    <div class="mb-3">
+        <label for="form-label">Replace Image (Optional)</label><br/>
+        <input type="file" name="image" class="form-control">
+    </div>
+    <button type="submit">Update trip</button>
+</form>
+<%- include('partials/footer') %>
