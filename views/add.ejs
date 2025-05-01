@@ -1,9 +1,20 @@
 <%- include('partials/header',{title: "Add post"}) %>
 
 <h1>Add a new post here!!!!</h1>
-<form action="/add" method="POST">
-    <label for="name">Name</label>
-    <input type="text" name="name" id="">
+<form action="/add" method="POST" >
+    <label for="name">Trip Title</label>
+    <input type="text" name="TripTitle" id="" placeholder="Write trip title"> 
+    <label for="Date">Date</label>
+    <input type="date" name="data " >
+    <label for="location">Location
+    </label>
+<input type="text" name="location">
+<textarea name="story" id="">Story/notes</textarea>
+<label for="tags">Tags: </label>
+<input type="text" name="tags">
+<label for="image">Image(optional)</label>
+<input type="file" name="image" >
+<button type="submit">Add post</button>
 </form>
 
 <%- include('partials/footer') %>
