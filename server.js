@@ -26,7 +26,7 @@ app.use(express.static('public'))
 if(!fs.existsSync('posts.json')) fs.writeFileSync('posts.json','[]')
 if(!fs.existsSync('uploads')) fs.mkdirSync('uploads')
 
-// Multer Setup
+// Multer Setup 
 const storage = multer.diskStorage({
     destination: 'uploads/',
     filename: (_,file,cb)=>{
