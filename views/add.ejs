@@ -1,20 +1,28 @@
 <%- include('partials/header',{title: "Add post"}) %>
 
 <h1>Add a new post here!!!!</h1>
-<form action="/add" method="POST" >
-    <label for="name">Trip Title</label>
-    <input type="text" name="TripTitle" id="" placeholder="Write trip title"> 
+
+<form action="/add" method="POST" enctype="multipart/form-data">
+    <label for="TripTitle">Trip Title</label>
+    <input type="text" name="TripTitle" id="TripTitle" placeholder="Write trip title" required>
+  
     <label for="Date">Date</label>
-    <input type="date" name="data " >
-    <label for="location">Location
-    </label>
-<input type="text" name="location">
-<textarea name="story" id="">Story/notes</textarea>
-<label for="tags">Tags: </label>
-<input type="text" name="tags">
-<label for="image">Image(optional)</label>
-<input type="file" name="image" >
-<button type="submit">Add post</button>
-</form>
+    <input type="date" name="date" id="Date" required>
+  
+    <label for="location">Location</label>
+    <input type="text" name="location" id="location" placeholder="e.g., Kabul, Afghanistan" required>
+  
+    <label for="story">Story/Notes</label>
+    <textarea name="story" id="story" required></textarea>
+  
+    <label for="tags">Tags</label>
+    <input type="text" name="tags" id="tags">
+  
+    <label for="image">Image (optional)</label>
+    <input type="file" name="image" id="image" accept="image/*">
+  
+    <button type="submit">Add post</button>
+  </form>
+  
 
 <%- include('partials/footer') %>
