@@ -13,7 +13,12 @@
         <p>Reflection: <%= post.story  %></p>
         <p>Tags: <%= post.tags %></p>
         <img src="<%= post.image %>" alt="Trip Image">
+        <div>
         <a href="/edit/<%= index %>">Edit</a>
+        <form method="post" action="/delete/<%= index %>">
+            <button onclick="return confirm('Are you sure?')">Delete</button>
+        </form>
+            </div>
     </div>
 <% }) %>
 
