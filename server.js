@@ -19,6 +19,7 @@ const __dirname = path.dirname(__filename);
 app.use(morgan('dev'))
 app.set('view engine', 'ejs')
 app.use(express.urlencoded({extended:true}))
+app.use("/uploads", express.static("uploads"));
 
 // File Setup
 
@@ -36,7 +37,7 @@ const storage = multer.diskStorage({
 const upload = multer({storage})
 
 // Router
-app.use('/',router)
+app.use('/',router(upload))
 
 app.listen(PORT, ()=>{
     console.log(`Server is listening on port: ${PORT}`)

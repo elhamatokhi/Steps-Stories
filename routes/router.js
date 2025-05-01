@@ -1,28 +1,29 @@
 import Router  from "express";
-import fs from "fs";
-import { fileURLToPath } from "url";
-import path from "path";
-import multer from "multer";
-const upload = multer({dest:"uploads/"})
- 
+import { getPosts, savePosts } from "../utils/file_helper.js";
+
 const router = Router();
 
+export default(upload)=>{
+  router.get('/',(req,res)=>{
+      res.render('index')
+  })
 
-// Directory setup
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+// Add
+  router.get('/add',(req,res)=>{
+      res.render('add')
+  })
 
-router.get('/',(req,res)=>{
-    res.render('index')
-})
-
-router.get('/add',(req,res)=>{
-console.log(req.body)
-    res.render('add')
-})
-router.post('/add', upload.single('image'),(req,res)=>{
+  router.post('/add', upload.single('image'),(req,res)=>{
     console.log(req.body)
-    res.redirect('/')
-})
+    const posts = getPosts()
 
-export default router
+    posts.push({
+        TripTitle: req.body.TripTitle,
+        image: req.file ? '/uploads/'+req.file.filename : null
+    })
+    savePosts(posts)
+    res.redirect('/')
+  })
+
+  return router;
+}
